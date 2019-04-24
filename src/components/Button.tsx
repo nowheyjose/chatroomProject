@@ -7,7 +7,7 @@ interface ButtonProps {
 export const Button: React.FunctionComponent<ButtonProps> = props => {
     return (
         <a onClick={props.hideButton}>
-            Button Function Component! Click to hide
+            TO-DO: Open chatroom
         </a>
     )
 }
