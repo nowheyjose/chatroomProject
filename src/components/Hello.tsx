@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Button } from './Button'
+import { Button } from './Chatroom'
 
 interface HelloProps {
     compiler: string
@@ -30,10 +30,6 @@ export class Hello extends React.Component<HelloProps, HelloState> {
         } else {
             elements.push(
                 <div className = "container">
-                    {/* <h1>
-                        This is a {this.props.framework} application using{' '}
-                        {this.props.compiler} with {this.props.bundler}
-                    </h1> */}
                     <h1> Hi! </h1>
                     <h2> I got banned from League of Legends so I made this site so you can freely <b>rage</b>. </h2>
                     <a className="waves-effect waves-light btn-large orange pulse" onClick={this.showButton}>Start Flaming</a>
