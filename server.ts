@@ -20,7 +20,7 @@ const server = app.listen(port, () => {
 })
 
 // when a connection is made, io sends a socket to socket manager function
-// var io = module.exports.io = require('socket.io')(server) what is this
+// var io = module.exports.io = require('socket.io')(server)change to typescript
 const io = (module.exports.io = require('socket.io')(server))
 io.on('connection', SocketManager)
 
