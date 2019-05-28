@@ -1,5 +1,5 @@
 {
-    "name": "React-Typescrpt-Express-Webpack-Starter",
+    "name": "chat-server",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
@@ -21,11 +21,15 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@types/socket.io-client": "^1.4.32",
         "dotenv": "^6.2.0",
         "eslint": "^5.16.0",
         "express": "^4.16.4",
         "materialize-css": "^1.0.0-rc.2",
+        "socket.io": "^2.2.0",
+        "socket.io-client": "^2.2.0",
         "typescript": "^3.4.3",
+        "uuid": "^3.3.2",
         "webpack": "^4.30.0"
     },
     "devDependencies": {

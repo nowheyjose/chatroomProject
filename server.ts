@@ -3,6 +3,7 @@ dotenv.config()
 
 import * as path from 'path'
 import * as express from 'express'
+import * as http from 'http'
 import * as webpack from 'webpack'
 import * as webpack_dev_middleware from 'webpack-dev-middleware'
 import * as webpack_hot_middleware from 'webpack-hot-middleware'
@@ -12,9 +13,16 @@ const app = express()
 const port = process.env.PORT || 3000
 const dev = process.env.PROD === 'false'
 
-app.listen(port, () => {
-    console.log(`App is listening on port ${port}`)
+import SocketManager = require('./SocketManager')
+
+const server = app.listen(port, () => {
+    console.log(`Listening on port ${port}`)
 })
+
+// when a connection is made, io sends a socket to socket manager function
+// var io = module.exports.io = require('socket.io')(server) what is this
+const io = (module.exports.io = require('socket.io')(server))
+io.on('connection', SocketManager)
 
 app.get('/', (req: express.Request, res: express.Response) => {
     res.sendFile(path.resolve(__dirname, 'frontEnd', 'index.html'))

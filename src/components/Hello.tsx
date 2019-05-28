@@ -10,7 +10,6 @@ interface HelloProps {
 interface HelloState {
     showButton: boolean
 }
-
 export class Hello extends React.Component<HelloProps, HelloState> {
     constructor(props: HelloProps) {
         super(props)
@@ -24,15 +23,26 @@ export class Hello extends React.Component<HelloProps, HelloState> {
         if (this.state.showButton) {
             elements.push(
                 <div>
+                    {/* render CHATROOM COMPONENT HERE
+                    <Chatroom/> */}
                     <Button hideButton={this.hideButton} />
                 </div>
             )
         } else {
             elements.push(
-                <div className = "container">
+                <div className="container">
                     <h1> Hi! </h1>
-                    <h2> I got banned from League of Legends so I made this site so you can freely <b>rage</b>. </h2>
-                    <a className="waves-effect waves-light btn-large orange pulse" onClick={this.showButton}>Start Flaming</a>
+                    <h2>
+                        {' '}
+                        I got banned from League of Legends so I made this site
+                        so you can <b>rage</b>.{' '}
+                    </h2>
+                    <a
+                        className="waves-effect waves-light btn-large orange pulse"
+                        onClick={this.showButton}
+                    >
+                        Start Flaming
+                    </a>
                 </div>
             )
         }
