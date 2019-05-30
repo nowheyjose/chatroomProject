@@ -7,7 +7,7 @@ import * as http from 'http'
 import * as webpack from 'webpack'
 import * as webpack_dev_middleware from 'webpack-dev-middleware'
 import * as webpack_hot_middleware from 'webpack-hot-middleware'
-import config from './webpack.config'
+import config from '../webpack.config'
 
 const app = express()
 const port = process.env.PORT || 3000
