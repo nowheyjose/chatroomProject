@@ -23,13 +23,18 @@ export class Hello extends React.Component<HelloProps, HelloState> {
         if (this.state.showButton) {
             elements.push(
                 <div>
-                    {/* render CHATROOM COMPONENT HERE
-                    <Chatroom/> */}
+                    {/* portal's job is to show either homepage or chatroom, portal is parent of homepage & chatroom  */}
+                    {/* render HOMEPAGE which renders BUTTON (a component that takes a callback that's invoked when it's clicked)
+                        
+                    */}
+
                     <Button hideButton={this.hideButton} />
                 </div>
             )
         } else {
             elements.push(
+                // render chatroom component
+                // portal single functional component that switches between homepage or selecting button
                 <div className="container">
                     <h1> Hi! </h1>
                     <h2>
@@ -50,6 +55,7 @@ export class Hello extends React.Component<HelloProps, HelloState> {
         return elements
     }
 
+    // show home page or hide homepage, if homepage is hidden, show chatroom
     private showButton = () => {
         this.setState({ showButton: true })
     }

@@ -1,23 +1,35 @@
 import { v4 } from 'uuid'
-
+interface Message {
+    id: string
+    time: string
+    message: string
+    sender: string
+}
 const createUser = ({ name = '' } = {}) => ({
     id: v4(),
     name
 })
 
-const createMessage = ({ message = '', sender = '' } = {}) => ({
+type test = (a: { message?: string; sender?: string }) => Message
+const createMessage: test = ({ message = '', sender = '' } = {}) => ({
     id: v4(),
     time: getTime(new Date(Date.now())),
     message,
     sender
 })
 
-// correct this
-const createChat = ({
-    messages = [],
-    name = 'Community',
-    users = []
-} = {}) => ({
+// Array<>
+const createChat: (a: {
+    messages?: Message[]
+    name?: string
+    users?: string[]
+}) => {
+    id: string
+    name: string
+    messages: Message[]
+    users: string[]
+    typingUsers: string[]
+} = ({ messages = [], name = 'Community', users = [] } = {}) => ({
     id: v4(),
     name,
     messages,

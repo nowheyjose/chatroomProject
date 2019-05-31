@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as io from 'socket.io-client'
-import { constants } from '../Events'
+import { USER_CONNECTED, LOGOUT } from '../Events'
 
 interface ButtonProps {
     hideButton: () => void
@@ -9,18 +9,18 @@ interface ButtonProps {
 export const Button: React.FunctionComponent<ButtonProps> = props => {
     return (
         <div className="container">
-            {/* <div className = "row">
-                <div className = "col s12"><History/></div>
-                <div className = "col s12"><TextBox/></div>
-            </div> */}
             <a onClick={props.hideButton}>TO-DO: Open chatroom</a>
         </div>
     )
 }
 // chatroom layout
 const socketUrl = 'localhost:3000'
-
-export class Chatroom extends React.Component {
+interface ChatroomState {
+    socket: any
+    user: string
+}
+// P = props, S = states, look up SS
+export class Chatroom extends React.Component<string, ChatroomState> {
     // connect to io server
     constructor(props: any) {
         super(props)
@@ -45,15 +45,16 @@ export class Chatroom extends React.Component {
 
     // set user property in state
     public setUser = (user: any) => {
-        const socket: any = this.state
-        socket.emit(constants.USER_CONNECTED, user)
+        // debug this
+        const socket = this.state.socket
+        socket.emit(USER_CONNECTED, user)
         this.setState({ user })
     }
 
     // set user prop in state to null
     public logout = () => {
-        const socket: any = this.state
-        socket.emit(constants.LOGOUT)
+        const socket = this.state.socket
+        socket.emit(LOGOUT)
         this.setState({ user: null })
     }
     public render() {
