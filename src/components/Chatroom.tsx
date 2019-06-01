@@ -2,27 +2,20 @@ import * as React from 'react'
 import * as io from 'socket.io-client'
 import { USER_CONNECTED, LOGOUT } from '../Events'
 
-interface ButtonProps {
-    hideButton: () => void
-}
-
-export const Button: React.FunctionComponent<ButtonProps> = props => {
-    return (
-        <div className="container">
-            <a onClick={props.hideButton}>TO-DO: Open chatroom</a>
-        </div>
-    )
-}
 // chatroom layout
 const socketUrl = 'localhost:3000'
+
+interface ChatroomProps {
+    title: string
+}
 interface ChatroomState {
     socket: any
     user: string
 }
 // P = props, S = states, look up SS
-export class Chatroom extends React.Component<string, ChatroomState> {
+export class Chatroom extends React.Component<ChatroomProps, ChatroomState> {
     // connect to io server
-    constructor(props: any) {
+    constructor(props: ChatroomProps) {
         super(props)
 
         this.state = {
@@ -58,7 +51,6 @@ export class Chatroom extends React.Component<string, ChatroomState> {
         this.setState({ user: null })
     }
     public render() {
-        const title = this.props
-        return <div className="container">{title}</div>
+        return <div className="container">{this.props.title}</div>
     }
 }
