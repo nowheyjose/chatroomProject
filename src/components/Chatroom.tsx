@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as io from 'socket.io-client'
 import { USER_CONNECTED, LOGOUT } from '../Events'
+import { LoginForm } from './LoginForm'
 
 // chatroom layout
 const socketUrl = 'localhost:3000'
@@ -51,6 +52,12 @@ export class Chatroom extends React.Component<ChatroomProps, ChatroomState> {
         this.setState({ user: null })
     }
     public render() {
-        return <div className="container">{this.props.title}</div>
+        const title = this.props.title
+        return (
+            <div className="container">
+                {/* Login form takes two props */}
+                <LoginForm socket={this.state.socket} setUser={this.setUser} />
+            </div>
+        )
     }
 }

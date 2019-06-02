@@ -24,7 +24,6 @@ export class Portal extends React.Component<{}, PortalState> {
             elements.push(
                 // render chatroom component
                 // portal single functional component that switches between homepage or selecting button
-                // <Chatroom />
                 <Chatroom title="Test" />
             )
         }
@@ -32,7 +31,7 @@ export class Portal extends React.Component<{}, PortalState> {
         return elements
     }
 
-    // show home page or hide homepage, if homepage is hidden, show chatroom
+    // show home page or hide homepage, if homepage is hidden i.e. button was clicked, show chatroom
     private showHomepage = () => {
         this.setState({ showHomepage: true })
     }
