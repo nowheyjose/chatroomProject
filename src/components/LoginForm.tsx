@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { VERIFY_USER } from '../Events'
 
+// the login form component which will verify if user name is valid and allow a user to set their name before
+// entering chat
 export default class LoginForm extends React.Component {
     constructor(props) {
         super(props)
