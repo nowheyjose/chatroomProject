@@ -4,17 +4,17 @@ import { VERIFY_USER } from '../Events'
 // the login form component which will verify if user name is valid and allow a user to set their name before
 // entering chat
 
-interface LoginProps { 
+interface LoginProps {
     socket: any
-    setUser: (user:any) => void
+    setUser: (user: any) => void
 }
 
 interface LoginState {
-    summonerName : string
-    error : string
+    summonerName: string
+    error: string
 }
 export class LoginForm extends React.Component<LoginProps, LoginState> {
-    constructor(props : LoginProps) {
+    constructor(props: LoginProps) {
         super(props)
 
         this.state = {
@@ -25,11 +25,13 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
 
     // takes an object that has a user and isUser property to verify if user is taken
     // TO-DO fix user and isUser
-    public setUser = ({user, isUser}) => {
+    public setUser = ({ user, isUser }) => {
+        console.log(user, isUser)
         if (isUser) {
             this.setError('User name taken')
         } else {
             this.props.setUser(user)
+            this.setError('')
         }
     }
 
@@ -45,9 +47,6 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
                         <h2>Summoner Name?</h2>
                     </label>
                     <input
-                        // ref={input => {
-                        //     this.textInput = input
-                        // }}
                         type="text"
                         value={summonerName}
                         onChange={this.handleChange}
@@ -58,7 +57,9 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
             </div>
         )
     }
-    private handleSubmit = (event: { preventDefault: () => void; }) => {
+
+    // when form submitted, socket will emit verify user, name and use callback function
+    private handleSubmit = (event: { preventDefault: () => void }) => {
         // use preventDefault to avoid submitting event to server and staying on application
         const socket = this.props.socket
         const summonerName = this.state.summonerName
@@ -67,7 +68,7 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
     }
 
     // don't need (event) in parenthesis because taking in a single parameter
-    private handleChange = (event: { target: { value: string; }; }) => {
+    private handleChange = (event: { target: { value: string } }) => {
         this.setState({ summonerName: event.target.value })
-    } 
+    }
 }

@@ -41,3 +41,5 @@ const createChat: (a: {
 const getTime = (date: any) => {
     return `${date.getHours()}:${('0' + date.getMinutes()).slice(-2)}`
 }
+
+export { createUser, createMessage, createChat }
