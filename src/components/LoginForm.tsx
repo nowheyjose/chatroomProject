@@ -6,7 +6,7 @@ import { VERIFY_USER } from '../Events'
 
 interface LoginProps { 
     socket: any
-    setUser: any
+    setUser: (user:any) => void
 }
 
 interface LoginState {
@@ -24,13 +24,14 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
     }
 
     // takes an object that has a user and isUser property to verify if user is taken
-    // public setUser = ({ user, isUser }) => {
-    //     if (isUser) {
-    //         this.setError('User name taken')
-    //     } else {
-    //         this.props.setUser(user)
-    //     }
-    // }
+    // TO-DO fix user and isUser
+    public setUser = ({user, isUser}) => {
+        if (isUser) {
+            this.setError('User name taken')
+        } else {
+            this.props.setUser(user)
+        }
+    }
 
     public setError = (error: any) => {
         this.setState({ error })
@@ -59,7 +60,6 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
     }
     private handleSubmit = (event: { preventDefault: () => void; }) => {
         // use preventDefault to avoid submitting event to server and staying on application
-        // event.preventDefault()
         const socket = this.props.socket
         const summonerName = this.state.summonerName
         // verify_user takes temp name and callback function setUser
