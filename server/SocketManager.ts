@@ -20,7 +20,8 @@ const socketManager = (socket: Socket) => {
 
     socket.on(USER_CONNECTED, user => {
         connectedUsers = addUser(connectedUsers, user)
-        socket.user = user
+        // do I even need this socket.user? .user property does not exist
+        // socket.use = user
 
         // broadcast to all sockets connected to io session with io.emit, sends new user list and user_connected
         io.emit(USER_CONNECTED)
@@ -29,16 +30,24 @@ const socketManager = (socket: Socket) => {
 }
 export { socketManager }
 
+
+// add user to list passed in
+// userList {object} with key value pairs of Users
+// user {User} to be added
+// return userList
 function addUser(userList: {}, user: { name: string }) {
-    let newList = Object.assign({}, userList)
+   const newList : any = {...userList}
     newList[user.name] = user
-    return newList
+    return userList
 }
 
+// remove user from list of all users 
+// userList {object} with key value pairs of Users
+// username {string} name of user to be removed
 function removeUser(userList: {}, username: string) {
-    const newList = Object.assign({}, userList)
+    const newList : any = {...userList}
     delete newList[username]
-    return newList
+    return userList
 }
 
 function isUser(userList: {}, username: string) {

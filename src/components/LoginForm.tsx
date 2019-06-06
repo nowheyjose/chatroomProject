@@ -25,7 +25,7 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
 
     // takes an object that has a user and isUser property to verify if user is taken
     // TO-DO fix user and isUser
-    public setUser = ({ user, isUser }) => {
+    public setUser = ({ user, isUser } : any) => {
         console.log(user, isUser)
         if (isUser) {
             this.setError('User name taken')
