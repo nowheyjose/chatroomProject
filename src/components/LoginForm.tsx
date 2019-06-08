@@ -24,7 +24,8 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
     }
 
     // takes an object that has a user and isUser property to verify if user is taken
-    // TO-DO fix user and isUser
+    // TO-DO fix user and isUser *** fixed issue by typing object to any
+    // Console not logging user and isUser response. Only logging empty curly braces
     public setUser = ({ user, isUser } : any) => {
         console.log(user, isUser)
         if (isUser) {

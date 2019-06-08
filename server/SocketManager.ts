@@ -25,6 +25,7 @@ const socketManager = (socket: Socket) => {
 
         // broadcast to all sockets connected to io session with io.emit, sends new user list and user_connected
         io.emit(USER_CONNECTED)
+        // connected users not logging, only showing empty curly brace
         console.log(connectedUsers)
     })
 }
@@ -35,6 +36,8 @@ export { socketManager }
 // userList {object} with key value pairs of Users
 // user {User} to be added
 // return userList
+// problem with pressing enter. Not detecting if username is taken
+// after entering user name, returns back to homepage portal. need to fix
 function addUser(userList: {}, user: { name: string }) {
    const newList : any = {...userList}
     newList[user.name] = user
