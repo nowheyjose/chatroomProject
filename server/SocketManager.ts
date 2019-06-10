@@ -31,16 +31,16 @@ const socketManager = (socket: Socket) => {
 }
 export { socketManager }
 
-
+// TO-DO
 // add user to list passed in
 // userList {object} with key value pairs of Users
 // user {User} to be added
 // return userList
-// problem with pressing enter. Not detecting if username is taken
 // after entering user name, returns back to homepage portal. need to fix
 function addUser(userList: {}, user: { name: string }) {
    const newList : any = {...userList}
     newList[user.name] = user
+    // problem with pressing enter. Not detecting if username is taken
     return userList
 }
 
