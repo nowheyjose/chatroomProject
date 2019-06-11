@@ -18,7 +18,7 @@ const createMessage: test = ({ message = '', sender = '' } = {}) => ({
     sender
 })
 
-// Array<>
+// changed the way I typed array
 const createChat: (a: {
     messages?: Message[]
     name?: string
