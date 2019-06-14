@@ -18,7 +18,7 @@ const createMessage: test = ({ message = '', sender = '' } = {}) => ({
     sender
 })
 
-// changed the way I typed array
+// tracking use of factories
 const createChat: (a: {
     messages?: Message[]
     name?: string

@@ -3,6 +3,7 @@ import { VERIFY_USER } from '../Events'
 
 // the login form component which will verify if user name is valid and allow a user to set their name before
 // entering chat
+// TO-DO: default to a single server room without being able to create multiple channels
 
 interface LoginProps {
     socket: any
