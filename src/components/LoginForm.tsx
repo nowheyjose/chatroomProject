@@ -27,7 +27,8 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
     // takes an object that has a user and isUser property to verify if user is taken
     // TO-DO fix user and isUser *** fixed issue by typing object to any
     // Console not logging user and isUser response. Only logging empty curly braces
-    public setUser = ({ user, isUser } : any) => {
+    public setUser = ({ user, isUser }: any) => {
+        console.log('setUser worked')
         console.log(user, isUser)
         if (isUser) {
             this.setError('User name taken')
@@ -46,13 +47,13 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        <h2>Summoner Name?</h2>
+                        <h2>Nickname ?</h2>
                     </label>
                     <input
                         type="text"
                         value={summonerName}
                         onChange={this.handleChange}
-                        placeholder={'MySummonerName'}
+                        placeholder={'My Nickname'}
                     />
                     <div className="error">{error ? error : null}</div>
                 </form>

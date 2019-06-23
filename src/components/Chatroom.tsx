@@ -69,7 +69,6 @@ export class Chatroom extends React.Component<ChatroomProps, ChatroomState> {
                     />
                 )}
                 {/* Login form takes two props */}
-                {/* <LoginForm socket={this.state.socket} setUser={this.setUser} /> */}
             </div>
         )
     }
