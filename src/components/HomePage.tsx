@@ -7,17 +7,15 @@ interface HomepageProps {
 export const HomePage: React.FunctionComponent<HomepageProps> = props => {
     return (
         <div className="container">
-            <h1> Hi! </h1>
-            <h2>
-                {' '}
-                I got banned from League of Legends so I made this site so you
-                can <b>rage</b>.{' '}
-            </h2>
+            <h1> ChitChat </h1>
+            <h3>
+                Talk about it.
+            </h3>
             <a
                 className="waves-effect waves-light btn-large orange pulse"
                 onClick={props.hideHomepage}
             >
-                Start Flaming
+                Start
             </a>
         </div>
     )
